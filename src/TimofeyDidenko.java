@@ -1,3 +1,6 @@
+/**
+ * Main file of the program - starts game, using input.txt file and print if the Capitan Jack Sparrow lost or won.
+ */
 package src;
 
 import java.io.BufferedReader;
@@ -6,19 +9,33 @@ import java.io.IOException;
 
 /**
  * Main class of the program. Creates whole game-process
+ *
+ * @author Zener
+ * @version 1.0
  */
 public class TimofeyDidenko {
-    private int[][] field; // Main field
-    private int scenario; // Scenario of the game
-    private String[] stringCoordinates; // Coordinates of all entities, String type
+    /**
+     * Main field for the game
+     */
+    private int[][] field;
+
+    /**
+     * Scenario of the game
+     */
+    @SuppressWarnings({"unused", "FieldCanBeLocal"})
+    private int scenario;
+
+    /**
+     * Coordinates of all entities
+     */
+    private String[] stringCoordinates;
 
     public static void main(String[] args) {
         TimofeyDidenko game = new TimofeyDidenko();
         game.startGame();
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                System.out.print(game.field[i][j]);
-                System.out.print(' ');
+        for (int i = 0; i < GameNumbers.FIELD_LENGTH; i++) {
+            for (int j = 0; j < GameNumbers.FIELD_LENGTH; j++) {
+                System.out.print(game.field[i][j] + " ");
             }
             System.out.print('\n');
         }
@@ -28,7 +45,7 @@ public class TimofeyDidenko {
      * Starts game, measures time for completing and
      */
     public void startGame() {
-        field = new int[9][9];
+        field = new int[GameNumbers.FIELD_LENGTH][GameNumbers.FIELD_LENGTH];
         loadData();
     }
 
