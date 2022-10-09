@@ -19,12 +19,12 @@ public class Parser {
     private final String[] stringCoordinates;
 
     /**
-     * X-ordinate of the object
+     * X-ordinate of the object.
      */
     private int x;
 
     /**
-     * Y-ordinate of the object
+     * Y-ordinate of the object.
      */
     private int y;
 
