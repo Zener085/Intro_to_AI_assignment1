@@ -31,12 +31,12 @@ public class Parser {
     /**
      * Index for the 1st number of coordinates.
      */
-    private final int NUM1_INDEX = 1;
+    private static final int NUM1_INDEX = 1;
 
     /**
      * Index for the 2nd number of coordinates.
      */
-    private final int NUM2_INDEX = 3;
+    private static final int NUM2_INDEX = 3;
 
     /**
      * Standard constructor for Parser.
@@ -55,20 +55,25 @@ public class Parser {
      * Parses all coordinates to put characters to the game's field.
      */
     public void parseCoordinates() {
-        field[0][0] = GameNumbers.THE_CAPITAN_JACK_SPARROW_CELL; // the Capitan Jack Sparrow
-        String coordinatesDavyJones = stringCoordinates[GameNumbers.DAVY_JONES_CELL - 1];
+        // the Capitan Jack Sparrow
+        field[0][0] = GameNumbers.THE_CAPITAN_JACK_SPARROW_CELL;
+        String coordinatesDavyJones =
+                stringCoordinates[GameNumbers.DAVY_JONES_CELL - 1];
         parseDavyJonesCoordinates(coordinatesDavyJones);
 
-        String coordinatesKraken = stringCoordinates[GameNumbers.KRAKEN_CELL - 1];
+        String coordinatesKraken =
+                stringCoordinates[GameNumbers.KRAKEN_CELL - 1];
         parseKrakenCoordinates(coordinatesKraken);
 
         String coordinatesRock = stringCoordinates[GameNumbers.ROCK_CELL - 1];
         parseRockCoordinates(coordinatesRock);
 
-        String coordinatesDeadManChest = stringCoordinates[GameNumbers.DEAD_MAN_CHEST_CELL - 1];
+        String coordinatesDeadManChest =
+                stringCoordinates[GameNumbers.DEAD_MAN_CHEST_CELL - 1];
         parseDeadManChestCoordinates(coordinatesDeadManChest);
 
-        String coordinatesTortuga = stringCoordinates[GameNumbers.TORTUGA_CELL - 1];
+        String coordinatesTortuga =
+                stringCoordinates[GameNumbers.TORTUGA_CELL - 1];
         parseTortugaCoordinates(coordinatesTortuga);
     }
 
@@ -78,8 +83,12 @@ public class Parser {
      * @param coordinatesDavyJones coordinates of Davy Jones, string form
      */
     private void parseDavyJonesCoordinates(final String coordinatesDavyJones) {
-        x = Integer.parseInt(String.valueOf(coordinatesDavyJones.charAt(NUM1_INDEX)));
-        y = Integer.parseInt(String.valueOf(coordinatesDavyJones.charAt(NUM2_INDEX)));
+        x = Integer.
+                parseInt(String.
+                        valueOf(coordinatesDavyJones.charAt(NUM1_INDEX)));
+        y = Integer.
+                parseInt(String.
+                        valueOf(coordinatesDavyJones.charAt(NUM2_INDEX)));
 
         field[x][y] = GameNumbers.DAVY_JONES_CELL;
 
@@ -94,7 +103,8 @@ public class Parser {
         if (x > 0 && y < GameNumbers.FIELD_LENGTH - 1) {
             field[x - 1][y + 1] = GameNumbers.DANGER_ZONE;
         }
-        if (x < GameNumbers.FIELD_LENGTH - 1 && y < GameNumbers.FIELD_LENGTH - 1) {
+        if (x < GameNumbers.FIELD_LENGTH - 1
+                && y < GameNumbers.FIELD_LENGTH - 1) {
             field[x + 1][y + 1] = GameNumbers.DANGER_ZONE;
         }
     }
@@ -105,8 +115,10 @@ public class Parser {
      * @param coordinatesKraken coordinates of Kraken, string form
      */
     private void parseKrakenCoordinates(final String coordinatesKraken) {
-        x = Integer.parseInt(String.valueOf(coordinatesKraken.charAt(NUM1_INDEX)));
-        y = Integer.parseInt(String.valueOf(coordinatesKraken.charAt(NUM2_INDEX)));
+        x = Integer.
+                parseInt(String.valueOf(coordinatesKraken.charAt(NUM1_INDEX)));
+        y = Integer.
+                parseInt(String.valueOf(coordinatesKraken.charAt(NUM2_INDEX)));
 
         field[x][y] = GameNumbers.KRAKEN_CELL;
         defineNeumannNeighborhood();
@@ -136,8 +148,10 @@ public class Parser {
      * @param coordinatesRock coordinates of Rock, string form
      */
     private void parseRockCoordinates(final String coordinatesRock) {
-        x = Integer.parseInt(String.valueOf(coordinatesRock.charAt(NUM1_INDEX)));
-        y = Integer.parseInt(String.valueOf(coordinatesRock.charAt(NUM2_INDEX)));
+        x = Integer.
+                parseInt(String.valueOf(coordinatesRock.charAt(NUM1_INDEX)));
+        y = Integer.
+                parseInt(String.valueOf(coordinatesRock.charAt(NUM2_INDEX)));
 
         field[x][y] = GameNumbers.ROCK_CELL;
     }
@@ -149,8 +163,12 @@ public class Parser {
      */
     private void parseDeadManChestCoordinates(
             final String coordinatesDeadManChest) {
-        x = Integer.parseInt(String.valueOf(coordinatesDeadManChest.charAt(NUM1_INDEX)));
-        y = Integer.parseInt(String.valueOf(coordinatesDeadManChest.charAt(NUM2_INDEX)));
+        x = Integer.
+                parseInt(String.
+                        valueOf(coordinatesDeadManChest.charAt(NUM1_INDEX)));
+        y = Integer.
+                parseInt(String.
+                        valueOf(coordinatesDeadManChest.charAt(NUM2_INDEX)));
 
         field[x][y] = GameNumbers.DEAD_MAN_CHEST_CELL;
     }
@@ -161,8 +179,12 @@ public class Parser {
      * @param coordinatesTortuga coordinates of Tortuga, string form
      */
     private void parseTortugaCoordinates(final String coordinatesTortuga) {
-        x = Integer.parseInt(String.valueOf(coordinatesTortuga.charAt(NUM1_INDEX)));
-        y = Integer.parseInt(String.valueOf(coordinatesTortuga.charAt(NUM2_INDEX)));
+        x = Integer.
+                parseInt(String.
+                        valueOf(coordinatesTortuga.charAt(NUM1_INDEX)));
+        y = Integer.
+                parseInt(String.
+                        valueOf(coordinatesTortuga.charAt(NUM2_INDEX)));
 
         field[x][y] = GameNumbers.TORTUGA_CELL;
     }
