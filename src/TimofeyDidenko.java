@@ -27,6 +27,10 @@ public class TimofeyDidenko {
      */
     private String[] stringCoordinates;
 
+    /**
+     * Single test of the game.
+     * @param args null list of arguments
+     */
     public static void main(final String[] args) {
         TimofeyDidenko game = new TimofeyDidenko();
         game.startGame();
