@@ -1,6 +1,3 @@
-/**
- * Implementation of class Parser, which has to parse the data from string form to coordinates form.
- */
 package src;
 
 /**
@@ -25,10 +22,11 @@ public class Parser {
      * Standard constructor for Parser.
      * It imports field and coordinates in string format.
      *
-     * @param gameField the field of the game
+     * @param gameField             the field of the game
      * @param gameStringCoordinates the coordinates of game's characters
      */
-    public Parser(final int[][] gameField, final String[] gameStringCoordinates) {
+    public Parser(final int[][] gameField,
+                  final String[] gameStringCoordinates) {
         this.field = gameField;
         this.stringCoordinates = gameStringCoordinates;
     }
@@ -105,19 +103,15 @@ public class Parser {
 
         field[x][y] = GameNumbers.KRAKEN_CELL;
 
-        // Define von Neumann neighborhood
-        if (x > 0) {
-            field[x - 1][y] = GameNumbers.DANGER_ZONE;
-        }
-        if (x < 8) {
-            field[x + 1][y] = GameNumbers.DANGER_ZONE;
-        }
-        if (y > 0) {
-            field[x][y - 1] = GameNumbers.DANGER_ZONE;
-        }
-        if (y < 8) {
-            field[x][y + 1] = GameNumbers.DANGER_ZONE;
-        }
+    }
+
+    /**
+     * Defines von Neuman neighborhood.
+     * @param x coordinates of x
+     * @param y coordinates of y
+     */
+    private void defineMooreNeighborhood(final int x, final int y) {
+
     }
 
     /**
@@ -136,9 +130,10 @@ public class Parser {
     /**
      * Parses coordinates of Dead Man's Chest to put it to the game's field.
      *
-     * @param coordinatesDeadManChest coordinates of Dead Man's Chest, string form
+     * @param coordinatesDeadManChest coordinates of Dead Man's Chest
      */
-    private void parseDeadManChestCoordinates(final String coordinatesDeadManChest) {
+    private void parseDeadManChestCoordinates(
+            final String coordinatesDeadManChest) {
         int x, y;
         x = Integer.parseInt(String.valueOf(coordinatesDeadManChest.charAt(1)));
         y = Integer.parseInt(String.valueOf(coordinatesDeadManChest.charAt(3)));

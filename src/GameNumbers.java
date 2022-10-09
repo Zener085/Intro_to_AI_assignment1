@@ -1,10 +1,8 @@
-/**
- * Singleton providing number for each blocks in the field
- */
 package src;
 
 /**
- * Class, which provides magic numbers for characters and object in the game field.
+ * Class, which provides magic numbers for characters
+ * and objects in the game field.
  *
  * @author Zener
  * @version 1.0

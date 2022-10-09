@@ -1,6 +1,3 @@
-/**
- * Functionality for character of the game - the Kraken.
- */
 package src;
 
 /**

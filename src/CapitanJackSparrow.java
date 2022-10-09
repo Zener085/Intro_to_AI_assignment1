@@ -1,6 +1,3 @@
-/**
- * Functionality for main character of the game - the Capitan Jack Sparrow.
- */
 package src;
 
 /**
@@ -24,10 +21,10 @@ public class CapitanJackSparrow {
 
     /**
      * Standard constructor for the Capitan Jack Sparrow.
-     * @param gameScenario scenario of the game, i.e. type of spyglass he will use
+     * @param gameScenario scenario of the game
      */
     @SuppressWarnings("unused")
-    CapitanJackSparrow(int gameScenario) {
+    CapitanJackSparrow(final int gameScenario) {
         this.scenario = gameScenario;
     }
 }

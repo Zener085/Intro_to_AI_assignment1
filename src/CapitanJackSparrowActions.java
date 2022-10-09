@@ -1,6 +1,3 @@
-/**
- * Interface for the class of the Capitan Jack Sparrow.
- */
 package src;
 
 /**
@@ -16,7 +13,8 @@ public interface CapitanJackSparrowActions {
     void move();
 
     /**
-     * The Capitan Jack Sparrow looks at the nearest cells and analyze them (depends on his type of spyglass).
+     * The Capitan Jack Sparrow looks at the nearest cells
+     * and analyze them (depends on his type of spyglass).
      */
     void look();
 }
