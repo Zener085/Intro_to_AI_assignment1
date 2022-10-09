@@ -7,7 +7,7 @@ package src;
  * @author Zener
  * @version 1.0
  */
-public class GameNumbers {
+public final class GameNumbers {
     /**
      * cell with nothing inside.
      */
@@ -53,4 +53,12 @@ public class GameNumbers {
      * length of the game field.
      */
     public static final int FIELD_LENGTH = 9;
+
+    /**
+     * Default constructor.
+     * It's never called.
+     */
+    private GameNumbers() {
+        //not called
+    }
 }
