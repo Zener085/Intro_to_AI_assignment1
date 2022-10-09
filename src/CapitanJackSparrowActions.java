@@ -13,7 +13,7 @@ public interface CapitanJackSparrowActions {
     void move();
 
     /**
-     * The Capitan Jack Sparrow looks at the nearest cells
+     * The Capitan Jack Sparrow looks at the nearest cells.
      * and analyze them (depends on his type of spyglass).
      */
     void look();
