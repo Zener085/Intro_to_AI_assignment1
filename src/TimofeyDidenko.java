@@ -5,35 +5,53 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Main class of the program. Creates whole game-process
+ * Main class of the program. Creates whole game-process.
+ *
+ * @author Zener
+ * @version 1.0
  */
 public class TimofeyDidenko {
-    private int[][] field; // Main field
-    private int scenario; // Scenario of the game
-    private String[] stringCoordinates; // Coordinates of all entities, String type
+    /**
+     * Main field for the game.
+     */
+    private int[][] field;
 
-    public static void main(String[] args) {
+    /**
+     * Scenario of the game.
+     */
+    @SuppressWarnings({"unused", "FieldCanBeLocal"})
+    private int scenario;
+
+    /**
+     * Coordinates of all entities.
+     */
+    private String[] stringCoordinates;
+
+    /**
+     * Single test of the game.
+     * @param args null list of arguments
+     */
+    public static void main(final String[] args) {
         TimofeyDidenko game = new TimofeyDidenko();
         game.startGame();
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                System.out.print(game.field[i][j]);
-                System.out.print(' ');
+        for (int i = 0; i < GameNumbers.FIELD_LENGTH; i++) {
+            for (int j = 0; j < GameNumbers.FIELD_LENGTH; j++) {
+                System.out.print(game.field[i][j] + " ");
             }
             System.out.print('\n');
         }
     }
 
     /**
-     * Starts game, measures time for completing and
+     * Starts game.
      */
     public void startGame() {
-        field = new int[9][9];
+        field = new int[GameNumbers.FIELD_LENGTH][GameNumbers.FIELD_LENGTH];
         loadData();
     }
 
     /**
-     * Loads field for the game
+     * Loads field for the game.
      */
     private void loadData() {
         BufferedReader reader;
