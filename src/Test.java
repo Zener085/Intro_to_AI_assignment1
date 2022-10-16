@@ -240,20 +240,15 @@ public class Test {
     private boolean
     ifDeadManChestOrTortugaNearRockKrakenDavyJonesTheCapitanJackSparrow(
             final int[] character) {
-        // the Capitan Jack Sparrow
-        if (character[0] == jack[0]
+        if (character[0] == jack[0] // the Capitan Jack Sparrow
                 && character[GameNumbers.CELL_LENGTH - 1]
                 == jack[GameNumbers.CELL_LENGTH - 1]) {
             return true;
-        }
-        // Rock
-        else if (character[0] == rock[0]
+        } else if (character[0] == rock[0] // Rock
                 && character[GameNumbers.CELL_LENGTH - 1]
                 == rock[GameNumbers.CELL_LENGTH - 1]) {
             return true;
-        }
-        // Kraken and it's danger zone
-        else if (character[0] == kraken[0]
+        } else if (character[0] == kraken[0] // Kraken and it's danger zone
                 && kraken[GameNumbers.CELL_LENGTH - 1] - 1
                 <= character[GameNumbers.CELL_LENGTH - 1]
                 && character[GameNumbers.CELL_LENGTH - 1]
@@ -264,9 +259,7 @@ public class Test {
                 && kraken[0] - 1 <= character[0]
                 && character[0] <= kraken[0] + 1) {
             return true;
-        }
-        // Davy Jones and it's danger zone
-        else {
+        } else { // Davy Jones and it's danger zone
             return davy[0] - 1 <= character[0] && character[0] <= davy[0] + 1
                     && davy[GameNumbers.CELL_LENGTH - 1] - 1
                     <= character[GameNumbers.CELL_LENGTH - 1]
