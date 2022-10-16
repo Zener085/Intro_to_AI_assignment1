@@ -9,50 +9,67 @@ package src;
  */
 public final class GameNumbers {
     /**
-     * cell with nothing inside.
+     * Cell with nothing inside.
      */
     @SuppressWarnings("unused")
     public static final int EMPTY_CELL = 0;
 
     /**
-     * cell, which is near Davy Jones or Kraken.
+     * Cell, which is near Davy Jones or Kraken.
      */
     public static final int DANGER_ZONE = 1;
 
     /**
-     * cell of Davy Jones.
+     * Cell of Davy Jones.
      */
     public static final int DAVY_JONES_CELL = 2;
 
     /**
-     * cell of Kraken.
+     * Cell of Kraken.
      */
     public static final int KRAKEN_CELL = 3;
 
     /**
-     * cell of Rock.
+     * Cell of Rock.
      */
     public static final int ROCK_CELL = 4;
 
     /**
-     * cell of Dead Man's Chest.
+     * Cell of Dead Man's Chest.
      */
     public static final int DEAD_MAN_CHEST_CELL = 5;
 
     /**
-     * cell of Tortuga island.
+     * Cell of Tortuga island.
      */
     public static final int TORTUGA_CELL = 6;
 
     /**
-     * cell of the Capitan Jack Sparrow.
+     * Cell of the Capitan Jack Sparrow.
      */
     public static final int THE_CAPITAN_JACK_SPARROW_CELL = 7;
 
     /**
-     * length of the game field.
+     * Length of the game field.
      */
     public static final int FIELD_LENGTH = 9;
+
+    /**
+     * Cell in the answer, which was unvisited.
+     */
+    @SuppressWarnings("unused")
+    public static final char UNVISITED = '-';
+
+    /**
+     * Cell in the answer, which was visited.
+     */
+    @SuppressWarnings("unused")
+    public static final char VISITED = '*';
+
+    /**
+     * Number of coordinates of the cell.
+     */
+    public static final int CELL_LENGTH = 2;
 
     /**
      * Default constructor.

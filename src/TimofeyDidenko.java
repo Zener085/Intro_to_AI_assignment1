@@ -17,6 +17,12 @@ public class TimofeyDidenko {
     private int[][] field;
 
     /**
+     * Field, which will be used for answer.
+     */
+    @SuppressWarnings({"unused", "FieldCanBeLocal"})
+    private char[][] path;
+
+    /**
      * Scenario of the game.
      */
     @SuppressWarnings({"unused", "FieldCanBeLocal"})
@@ -32,7 +38,9 @@ public class TimofeyDidenko {
      * @param args null list of arguments
      */
     public static void main(final String[] args) {
+        Test test = new Test();
         TimofeyDidenko game = new TimofeyDidenko();
+        test.generateTest(1);
         game.startGame();
         for (int i = 0; i < GameNumbers.FIELD_LENGTH; i++) {
             for (int j = 0; j < GameNumbers.FIELD_LENGTH; j++) {
@@ -47,6 +55,7 @@ public class TimofeyDidenko {
      */
     public void startGame() {
         field = new int[GameNumbers.FIELD_LENGTH][GameNumbers.FIELD_LENGTH];
+        path = new char[GameNumbers.FIELD_LENGTH][GameNumbers.FIELD_LENGTH];
         loadData();
     }
 
