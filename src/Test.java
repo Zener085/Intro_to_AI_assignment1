@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class Test {
     /**
-     * Object for generating random numbers;
+     * Object for generating random numbers.
      */
     private final Random random = new Random();
 
@@ -67,16 +67,17 @@ public class Test {
      * @param scenario scenario of the game, i.e. what type of spyglass
      *                 the Capitan Jack Sparrow will use.
      */
-    public void generateTest(int scenario) {
+    public void generateTest(final int scenario) {
         generateCells();
         createInputFile(scenario);
     }
 
     /**
      * Creates input file and sends to it all coordinates and scenario.
+     *
      * @param scenario scenario of the game
      */
-    private void createInputFile(int scenario) {
+    private void createInputFile(final int scenario) {
         BufferedWriter writer;
         FileWriter file;
         try {
@@ -102,7 +103,7 @@ public class Test {
      * @param character one character
      * @throws IOException if it's not allowed to write to the file
      */
-    private void printCell(BufferedWriter writer, int[] character)
+    private void printCell(final BufferedWriter writer, final int[] character)
             throws IOException {
         writer.append('[');
         writer.append(String.valueOf(character[0]));
@@ -136,8 +137,9 @@ public class Test {
      */
     private void generateDavyJonesCell() {
         generateCell(davy);
-        if (ifDavyJonesNearTheCapitanJackSparrow())
+        if (ifDavyJonesNearTheCapitanJackSparrow()) {
             generateDavyJonesCell();
+        }
     }
 
     /**
@@ -155,8 +157,9 @@ public class Test {
      */
     private void generateKrakenCell() {
         generateCell(kraken);
-        if (ifKrakenNearDavyJonesOrTheCapitanJackSparrow())
+        if (ifKrakenNearDavyJonesOrTheCapitanJackSparrow()) {
             generateKrakenCell();
+        }
     }
 
     /**
@@ -180,8 +183,9 @@ public class Test {
      */
     private void generateRockCell() {
         generateCell(rock);
-        if (ifRockNearDavyJonesOrTheCapitanJackSparrow())
+        if (ifRockNearDavyJonesOrTheCapitanJackSparrow()) {
             generateRockCell();
+        }
     }
 
     /**
@@ -205,8 +209,11 @@ public class Test {
      */
     private void generateDeadMansChestCell() {
         generateCell(chest);
-        if (ifDeadManChestOrTortugaNearRockKrakenDavyJonesTheCapitanJackSparrow(chest))
+        if (
+        ifDeadManChestOrTortugaNearRockKrakenDavyJonesTheCapitanJackSparrow(
+                        chest)) {
             generateDeadMansChestCell();
+        }
     }
 
     /**
@@ -215,50 +222,57 @@ public class Test {
     private void generateTortugaCell() {
         generateCell(tortuga);
         if (
-                ifDeadManChestOrTortugaNearRockKrakenDavyJonesTheCapitanJackSparrow
-                        (tortuga)
-        )
+        ifDeadManChestOrTortugaNearRockKrakenDavyJonesTheCapitanJackSparrow(
+                        tortuga)
+        ) {
             generateTortugaCell();
+        }
     }
 
     /**
-     * Checks if Dead Man's Chest or Tortuga is in the same cell with Davy Jones,
-     * Kraken, Rock or the Capitan Jack Sparrow.
+     * Checks if Dead Man's Chest or Tortuga is in the same cell
+     * with Davy Jones, Kraken, Rock or the Capitan Jack Sparrow.
      *
      * @param character Dead Man's Chest or Tortuga
      * @return true if the chest intersects Davy Jones or it's danger zone,
      * Kraken or it's danger zone, Rock or the Capitan Jack Sparrow.
      */
     private boolean
-    ifDeadManChestOrTortugaNearRockKrakenDavyJonesTheCapitanJackSparrow
-    (int[] character) {
+    ifDeadManChestOrTortugaNearRockKrakenDavyJonesTheCapitanJackSparrow(
+            final int[] character) {
         // the Capitan Jack Sparrow
         if (character[0] == jack[0]
                 && character[GameNumbers.CELL_LENGTH - 1]
-                == jack[GameNumbers.CELL_LENGTH - 1])
+                == jack[GameNumbers.CELL_LENGTH - 1]) {
             return true;
-            // Rock
+        }
+        // Rock
         else if (character[0] == rock[0]
                 && character[GameNumbers.CELL_LENGTH - 1]
-                == rock[GameNumbers.CELL_LENGTH - 1])
+                == rock[GameNumbers.CELL_LENGTH - 1]) {
             return true;
-            // Kraken and it's danger zone
+        }
+        // Kraken and it's danger zone
         else if (character[0] == kraken[0]
                 && kraken[GameNumbers.CELL_LENGTH - 1] - 1
                 <= character[GameNumbers.CELL_LENGTH - 1]
                 && character[GameNumbers.CELL_LENGTH - 1]
-                <= kraken[GameNumbers.CELL_LENGTH - 1] + 1)
+                <= kraken[GameNumbers.CELL_LENGTH - 1] + 1) {
             return true;
-        else if (character[GameNumbers.CELL_LENGTH - 1]
+        } else if (character[GameNumbers.CELL_LENGTH - 1]
                 == kraken[GameNumbers.CELL_LENGTH - 1]
-                && kraken[0] - 1 <= character[0] && character[0] <= kraken[0] + 1)
+                && kraken[0] - 1 <= character[0]
+                && character[0] <= kraken[0] + 1) {
             return true;
-            // Davy Jones and it's danger zone
-        else return davy[0] - 1 <= character[0] && character[0] <= davy[0] + 1
+        }
+        // Davy Jones and it's danger zone
+        else {
+            return davy[0] - 1 <= character[0] && character[0] <= davy[0] + 1
                     && davy[GameNumbers.CELL_LENGTH - 1] - 1
                     <= character[GameNumbers.CELL_LENGTH - 1]
                     && character[GameNumbers.CELL_LENGTH - 1]
                     <= davy[GameNumbers.CELL_LENGTH - 1] + 1;
+        }
     }
 
     /**
@@ -266,8 +280,9 @@ public class Test {
      *
      * @param character one of whole characters.
      */
-    private void generateCell(int[] character) {
-        character[0] = random.nextInt(9);
-        character[GameNumbers.CELL_LENGTH - 1] = random.nextInt(9);
+    private void generateCell(final int[] character) {
+        character[0] = random.nextInt(GameNumbers.FIELD_LENGTH);
+        character[GameNumbers.CELL_LENGTH - 1]
+                = random.nextInt(GameNumbers.FIELD_LENGTH);
     }
 }
