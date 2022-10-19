@@ -17,7 +17,7 @@ public class TimofeyDidenko {
     private int[][] field;
 
     /**
-     * Field, which will be used for answer.
+     * Path of the game (if the game is won).
      */
     @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private char[][] path;
@@ -25,13 +25,18 @@ public class TimofeyDidenko {
     /**
      * Scenario of the game.
      */
-    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private int scenario;
 
     /**
      * Coordinates of all entities.
      */
     private String[] stringCoordinates;
+
+    /**
+     * The Backtracking algorithm.
+     */
+    @SuppressWarnings("FieldCanBeLocal")
+    private Backtracking backtracking;
 
     /**
      * Single test of the game.
@@ -57,6 +62,13 @@ public class TimofeyDidenko {
         field = new int[GameNumbers.FIELD_LENGTH][GameNumbers.FIELD_LENGTH];
         path = new char[GameNumbers.FIELD_LENGTH][GameNumbers.FIELD_LENGTH];
         loadData();
+        backtracking = new Backtracking(scenario, field);
+        try {
+            path = backtracking.analysis();
+            backtrackingWonGame();
+        } catch (GameLost e) {
+            backtrackingLostGame();
+        }
     }
 
     /**
@@ -76,4 +88,30 @@ public class TimofeyDidenko {
         Parser parser = new Parser(field, stringCoordinates);
         parser.parseCoordinates();
     }
+
+    /**
+     * Creates output file for the game using Backtracking algorithm.
+     * Called only when the game is lost.
+     */
+    private void backtrackingLostGame() {}
+
+    /**
+     * Creates output file for the game using Backtracking algorithm.
+     * Called only when the game is won.
+     */
+    private void backtrackingWonGame() {}
+
+    /**
+     * Creates output file for the game using A* algorithm.
+     * Called only when the game is lost.
+      */
+    @SuppressWarnings("unused")
+    private void aStartLostGame() {}
+
+    /**
+     * Creates output file for the game using A* algorithm.
+     * Called only when the game is won.
+      */
+    @SuppressWarnings("unused")
+    private void aStarWonGame() {}
 }
