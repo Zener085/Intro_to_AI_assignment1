@@ -21,24 +21,18 @@ public class TimofeyDidenko {
     /**
      * Path of the game (if the game is won).
      */
-    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private char[][] path;
 
     /**
      * Scenario of the game.
      */
+    @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private int scenario;
 
     /**
      * Coordinates of all entities.
      */
     private String[] stringCoordinates;
-
-    /**
-     * The Backtracking algorithm.
-     */
-    @SuppressWarnings("FieldCanBeLocal")
-    private Backtracking backtracking;
 
     /**
      * Measure time of execution of work of 1 algorithm.
@@ -54,14 +48,10 @@ public class TimofeyDidenko {
         Test test = new Test();
         TimofeyDidenko game = new TimofeyDidenko();
         long totalTime = 0;
-        test.generateTest(1);
-        game.startGame();
-        totalTime += game.executionTime;
-        for (int i = 0; i < GameNumbers.FIELD_LENGTH; i++) {
-            for (int j = 0; j < GameNumbers.FIELD_LENGTH; j++) {
-                System.out.print(game.field[i][j] + " ");
-            }
-            System.out.print('\n');
+        for (int testI = 0; testI < 1000; testI++) {
+            test.generateTest(1);
+            game.startGame();
+            totalTime += game.executionTime;
         }
         System.out.println(totalTime + " millis");
     }
@@ -73,8 +63,10 @@ public class TimofeyDidenko {
         field = new int[GameNumbers.FIELD_LENGTH][GameNumbers.FIELD_LENGTH];
         path = new char[GameNumbers.FIELD_LENGTH][GameNumbers.FIELD_LENGTH];
         loadData();
-        backtracking = new Backtracking(scenario, field, path);
+
+        Backtracking backtracking = new Backtracking(field, path);
         long start = System.nanoTime();
+
         try {
             path = backtracking.analysis();
             executionTime = System.nanoTime() - start;
@@ -117,6 +109,19 @@ public class TimofeyDidenko {
      * Called only when the game is lost.
      */
     private void backtrackingLostGame() {
+        BufferedWriter writer;
+        FileWriter file;
+        try {
+            file = new FileWriter("src/outputBacktracking.txt");
+            writer = new BufferedWriter(file);
+            writer.write("Lost\n");
+            printCells(writer);
+            writer.append("-------------------\n");
+            writer.append(String.valueOf(executionTime)).append(" millis");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

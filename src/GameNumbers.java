@@ -57,13 +57,11 @@ public final class GameNumbers {
     /**
      * Cell in the answer, which was unvisited.
      */
-    @SuppressWarnings("unused")
     public static final char UNVISITED = '-';
 
     /**
      * Cell in the answer, which was visited.
      */
-    @SuppressWarnings("unused")
     public static final char VISITED = '*';
 
     /**
