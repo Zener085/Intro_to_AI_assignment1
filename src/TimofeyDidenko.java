@@ -1,6 +1,10 @@
 package src;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Main class of the program. Creates whole game-process.
@@ -36,6 +40,9 @@ public class TimofeyDidenko {
     @SuppressWarnings("FieldCanBeLocal")
     private Backtracking backtracking;
 
+    /**
+     * Measure time of execution of work of 1 algorithm.
+     */
     private long executionTime;
 
     /**

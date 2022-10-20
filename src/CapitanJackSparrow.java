@@ -35,6 +35,7 @@ public class CapitanJackSparrow {
      * Standard constructor for the Capitan Jack Sparrow.
      *
      * @param gameScenario scenario of the game
+     * @param gameField Field of the game
      */
     @SuppressWarnings("unused")
     CapitanJackSparrow(final int gameScenario, final int[][] gameField) {

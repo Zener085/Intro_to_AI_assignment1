@@ -7,6 +7,9 @@ package src;
  * @version 1.0
  */
 public class GameLost extends RuntimeException {
+    /**
+     * Standard constructor to raise the exception.
+     */
     public GameLost() {
         super("The game is lost!");
     }
