@@ -70,6 +70,11 @@ public final class GameNumbers {
     public static final int CELL_LENGTH = 2;
 
     /**
+     * Number of tests.
+     */
+    public static final int TESTS = 1000;
+
+    /**
      * Default constructor.
      * It's never called.
      */

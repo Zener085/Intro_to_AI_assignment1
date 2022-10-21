@@ -48,7 +48,7 @@ public class TimofeyDidenko {
         Test test = new Test();
         TimofeyDidenko game = new TimofeyDidenko();
         long totalTime = 0;
-        for (int testI = 0; testI < 1000; testI++) {
+        for (int testI = 0; testI < GameNumbers.TESTS; testI++) {
             test.generateTest(1);
             game.startGame();
             totalTime += game.executionTime;

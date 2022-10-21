@@ -18,25 +18,23 @@ public class Backtracking {
     /**
      * The game field.
      */
-    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private final int[][] field;
 
     /**
      * Path of the Capitan Jack Sparrow to win the game.
      */
-    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private final char[][] path;
 
     /**
      * Standard constructor for Backtracking algorithm.
      *
      * @param gameField the game field.
-     * @param path path of the Capitan Jack Sparrow.
+     * @param gamePath path of the Capitan Jack Sparrow.
      */
     public Backtracking(final int[][] gameField,
-                        final char[][] path) {
+                        final char[][] gamePath) {
         this.field = gameField;
-        this.path = path;
+        this.path = gamePath;
     }
 
     /**
