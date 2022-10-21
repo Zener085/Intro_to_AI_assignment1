@@ -72,10 +72,10 @@ public class TimofeyDidenko {
         try {
             path = backtracking.analysis();
             executionTime = System.nanoTime() - start;
-            WonGame("outputBacktracking.txt");
+            wonGame("outputBacktracking.txt");
         } catch (GameLost e) {
             executionTime = System.nanoTime() - start;
-            LostGame("outputBacktracking.txt");
+            lostGame("outputBacktracking.txt");
         }
 
         start = System.nanoTime();
@@ -83,10 +83,10 @@ public class TimofeyDidenko {
         try {
             path = aStar.analysis(field);
             executionTime = System.nanoTime() - start;
-            WonGame("outputAStar.txt");
+            wonGame("outputAStar.txt");
         } catch (GameLost e) {
             executionTime = System.nanoTime() - start;
-            LostGame("outputAStar.txt");
+            lostGame("outputAStar.txt");
         }
     }
 
@@ -123,7 +123,7 @@ public class TimofeyDidenko {
      *
      * @param fileName name of the file the output will be.
      */
-    private void LostGame(String fileName) {
+    private void lostGame(final String fileName) {
         BufferedWriter writer;
         FileWriter file;
         try {
@@ -145,7 +145,7 @@ public class TimofeyDidenko {
      *
      * @param fileName name of the file the output will be.
      */
-    private void WonGame(String fileName) {
+    private void wonGame(final String fileName) {
         BufferedWriter writer;
         FileWriter file;
         try {

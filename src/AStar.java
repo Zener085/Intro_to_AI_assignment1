@@ -55,8 +55,9 @@ public class AStar {
          *                        - to the Tortuga island(1)
          *                        or to the Dead Man's Chest(0).
          */
-        public Cell(final Cell cellParent, final int fieldData, final int[] cellCoordinates,
-                    final int where) {
+        private Cell(final Cell cellParent, final int fieldData,
+                     final int[] cellCoordinates,
+                     final int where) {
             this.parent = cellParent;
             this.data = fieldData;
             this.coordinates[0] = cellCoordinates[0];
@@ -102,10 +103,12 @@ public class AStar {
          * than, equal to, or greater than the specified object.
          *
          * @param other the object to be compared.
-         * @return a negative integer, zero, or a positive integer as this object
+         * @return a negative integer, zero, or a positive integer
+         * as this object
          * is less than, equal to, or greater than the specified object.
          * @throws NullPointerException if the specified object is null
-         * @throws ClassCastException   if the specified object's type prevents it
+         * @throws ClassCastException   if the specified
+         *                              object's type prevents it
          */
         @Override
         public int compareTo(final Cell other) {
