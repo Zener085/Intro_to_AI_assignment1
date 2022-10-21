@@ -57,19 +57,22 @@ public final class GameNumbers {
     /**
      * Cell in the answer, which was unvisited.
      */
-    @SuppressWarnings("unused")
     public static final char UNVISITED = '-';
 
     /**
      * Cell in the answer, which was visited.
      */
-    @SuppressWarnings("unused")
     public static final char VISITED = '*';
 
     /**
      * Number of coordinates of the cell.
      */
     public static final int CELL_LENGTH = 2;
+
+    /**
+     * Number of tests.
+     */
+    public static final int TESTS = 1000;
 
     /**
      * Default constructor.
