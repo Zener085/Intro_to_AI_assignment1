@@ -17,41 +17,43 @@ public class AStar {
         /**
          * Parent of the cell, i.e. where the Capitan Jack Sparrow came from.
          */
-        public Cell parent;
+        private Cell parent;
 
         /**
          * What's in the cell.
          */
-        public int data;
+        private final int data;
 
         /**
          * A path from the initial position to the current node.
          */
-        public int gN;
+        private int gN;
 
         /**
-         * A path from the current node to the goal position
+         * A path from the current node to the goal position.
          */
-        public int hN;
+        private int hN;
 
         /**
          * Summary of hN and gN.
          */
-        public int fN;
+        private final int fN;
 
         /**
          * Coordinates of the cell.
          */
-        public final int[] coordinates = new int[2];
+        private final int[] coordinates = new int[2];
 
         /**
          * Standard constructor, translates parent of the cell
          * and it's coordinates.
          *
          * @param cellParent      parent of the cell
+         * @param fieldData       data of the field, i.e. who is in the cell.
          * @param cellCoordinates coordinates of the cell
-         * @param where           where the Capitan Jack Sparrow wants to move -
-         *                        to the Tortuga island(1) or to the Dead Man's Chest(0).
+         * @param where           where the Capitan Jack Sparrow wants to move
+         *                        - to the Tortuga island(1)
+         *                        or to the Dead Man's Chest(0).
          */
         public Cell(final Cell cellParent, final int fieldData, final int[] cellCoordinates,
                     final int where) {
@@ -81,7 +83,8 @@ public class AStar {
          * @param where where the Capitan Jack Sparrow wants to move.
          */
         private void setHN(final int where) {
-            int x, y;
+            int x;
+            int y;
             if (where == 0) {
                 x = Math.abs(coordinates[0] - deadMansChest[0]);
                 y = Math.abs(coordinates[1] - deadMansChest[1]);
@@ -105,7 +108,7 @@ public class AStar {
          * @throws ClassCastException   if the specified object's type prevents it
          */
         @Override
-        public int compareTo(Cell other) {
+        public int compareTo(final Cell other) {
             if (this.fN < other.fN) {
                 return -1;
             }
@@ -156,12 +159,12 @@ public class AStar {
     /**
      * Set of the visited cells.
      */
-    HashSet<Cell> cells = new HashSet<>();
+    private final HashSet<Cell> cells = new HashSet<>();
 
     /**
      * Priority queue of cells the Capitan Jack Sparrow can move next.
      */
-    PriorityQueue<Cell> nextCells = new PriorityQueue<>();
+    private final PriorityQueue<Cell> nextCells = new PriorityQueue<>();
 
     /**
      * Standard constructor for the game.
@@ -193,11 +196,13 @@ public class AStar {
 
     /**
      * Finds cell of the Dead Man's Chest.
+     *
+     * @param gameField field of the game.
      */
-    private void findDeadManChest(final int[][] field) {
+    private void findDeadManChest(final int[][] gameField) {
         for (int i = 0; i < GameNumbers.FIELD_LENGTH; i++) {
             for (int j = 0; j < GameNumbers.FIELD_LENGTH; j++) {
-                if (field[i][j] == GameNumbers.DEAD_MAN_CHEST_CELL) {
+                if (gameField[i][j] == GameNumbers.DEAD_MAN_CHEST_CELL) {
                     deadMansChest = new int[2];
                     deadMansChest[0] = i;
                     deadMansChest[1] = j;
@@ -210,11 +215,13 @@ public class AStar {
 
     /**
      * Finds cell of Tortuga island.
+     *
+     * @param gameField field of the game.
      */
-    private void findTortuga(final int[][] field) {
+    private void findTortuga(final int[][] gameField) {
         for (int i = 0; i < GameNumbers.FIELD_LENGTH; i++) {
             for (int j = 0; j < GameNumbers.FIELD_LENGTH; j++) {
-                if (field[i][j] == GameNumbers.TORTUGA_CELL) {
+                if (gameField[i][j] == GameNumbers.TORTUGA_CELL) {
                     tortuga = new int[2];
                     tortuga[0] = i;
                     tortuga[1] = j;
@@ -254,7 +261,7 @@ public class AStar {
     }
 
     /**
-     * One move of the
+     * One move of the Capitan Jack Sparrow.
      */
     private void move() {
         Cell cell = nextCells.poll();
@@ -282,6 +289,8 @@ public class AStar {
 
     /**
      * Adds new cells to move to the priority queue.
+     *
+     * @param cell current cell where the Capitan Jack Sparrow is.
      */
     private void newCells(final Cell cell) {
         int[] coordinates = cell.coordinates;
@@ -324,6 +333,8 @@ public class AStar {
 
     /**
      * Translate path to the matrix to provide the answer.
+     *
+     * @param path path of the Capitan Jack Sparrow to the Dead Man's Chest.
      */
     private void createPath(final char[][] path) {
         Cell cell = field[deadMansChest[0]][deadMansChest[1]];
