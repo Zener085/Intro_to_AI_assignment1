@@ -1,2 +1,4 @@
 Backtracking with scenario 1: 13767600 millis
 Backtracking with scenario 2: 11050300 millis
+A* with scenario 1: 25989900 millis
+A* with scenario 2: 31697300 millis

@@ -65,8 +65,10 @@ public class TimofeyDidenko {
         loadData();
 
         Backtracking backtracking = new Backtracking(field, path);
+        AStar aStar = new AStar(scenario);
         long start = System.nanoTime();
 
+        // Backtracking
         try {
             path = backtracking.analysis();
             executionTime = System.nanoTime() - start;
@@ -74,6 +76,17 @@ public class TimofeyDidenko {
         } catch (GameLost e) {
             executionTime = System.nanoTime() - start;
             backtrackingLostGame();
+        }
+
+        start = System.nanoTime();
+        // A*
+        try {
+            path = aStar.analysis(field);
+            executionTime = System.nanoTime() - start;
+            aStarWonGame();
+        } catch (GameLost e) {
+            executionTime = System.nanoTime() - start;
+            aStartLostGame();
         }
     }
 
@@ -151,16 +164,43 @@ public class TimofeyDidenko {
      * Creates output file for the game using A* algorithm.
      * Called only when the game is lost.
      */
-    @SuppressWarnings("unused")
     private void aStartLostGame() {
+        BufferedWriter writer;
+        FileWriter file;
+        try {
+            file = new FileWriter("src/outputAStar.txt");
+            writer = new BufferedWriter(file);
+            writer.write("Lost\n");
+            printCells(writer);
+            writer.append("-------------------\n");
+            writer.append(String.valueOf(executionTime)).append(" millis");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      * Creates output file for the game using A* algorithm.
      * Called only when the game is won.
      */
-    @SuppressWarnings("unused")
     private void aStarWonGame() {
+        BufferedWriter writer;
+        FileWriter file;
+        try {
+            file = new FileWriter("src/outputAStar.txt");
+            writer = new BufferedWriter(file);
+            writer.write("Win\n");
+            countMoves(writer);
+            printCells(writer);
+            writer.append("-------------------\n");
+            printPath(writer);
+            writer.append("-------------------\n");
+            writer.append(String.valueOf(executionTime)).append(" millis");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
