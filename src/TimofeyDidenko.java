@@ -65,15 +65,28 @@ public class TimofeyDidenko {
         loadData();
 
         Backtracking backtracking = new Backtracking(field, path);
+        AStar aStar = new AStar(scenario);
         long start = System.nanoTime();
 
+        // Backtracking
         try {
             path = backtracking.analysis();
             executionTime = System.nanoTime() - start;
-            backtrackingWonGame();
+            wonGame("outputBacktracking.txt");
         } catch (GameLost e) {
             executionTime = System.nanoTime() - start;
-            backtrackingLostGame();
+            lostGame("outputBacktracking.txt");
+        }
+
+        start = System.nanoTime();
+        // A*
+        try {
+            path = aStar.analysis(field);
+            executionTime = System.nanoTime() - start;
+            wonGame("outputAStar.txt");
+        } catch (GameLost e) {
+            executionTime = System.nanoTime() - start;
+            lostGame("outputAStar.txt");
         }
     }
 
@@ -105,14 +118,16 @@ public class TimofeyDidenko {
     }
 
     /**
-     * Creates output file for the game using Backtracking algorithm.
+     * Creates output file for the game.
      * Called only when the game is lost.
+     *
+     * @param fileName name of the file the output will be.
      */
-    private void backtrackingLostGame() {
+    private void lostGame(final String fileName) {
         BufferedWriter writer;
         FileWriter file;
         try {
-            file = new FileWriter("src/outputBacktracking.txt");
+            file = new FileWriter("src/" + fileName);
             writer = new BufferedWriter(file);
             writer.write("Lost\n");
             printCells(writer);
@@ -125,14 +140,16 @@ public class TimofeyDidenko {
     }
 
     /**
-     * Creates output file for the game using Backtracking algorithm.
+     * Creates output file for the game.
      * Called only when the game is won.
+     *
+     * @param fileName name of the file the output will be.
      */
-    private void backtrackingWonGame() {
+    private void wonGame(final String fileName) {
         BufferedWriter writer;
         FileWriter file;
         try {
-            file = new FileWriter("src/outputBacktracking.txt");
+            file = new FileWriter("src/" + fileName);
             writer = new BufferedWriter(file);
             writer.write("Win\n");
             countMoves(writer);
@@ -148,23 +165,8 @@ public class TimofeyDidenko {
     }
 
     /**
-     * Creates output file for the game using A* algorithm.
-     * Called only when the game is lost.
-     */
-    @SuppressWarnings("unused")
-    private void aStartLostGame() {
-    }
-
-    /**
-     * Creates output file for the game using A* algorithm.
-     * Called only when the game is won.
-     */
-    @SuppressWarnings("unused")
-    private void aStarWonGame() {
-    }
-
-    /**
      * Counts number of moves to win the game and prints that to the file.
+     *
      * @param writer objects, which prints to the output file.
      * @throws IOException raised if the file cannot be used to print
      */
@@ -182,6 +184,7 @@ public class TimofeyDidenko {
 
     /**
      * Prints cells of characters in the start of the game.
+     *
      * @param writer object, which prints to the output file.
      * @throws IOException raised if the file is cannot be used to print.
      */
@@ -194,6 +197,7 @@ public class TimofeyDidenko {
 
     /**
      * Prints path to the output file.
+     *
      * @param writer object, which prints to the file.
      * @throws IOException raised if the file cannot be used to print.
      */
