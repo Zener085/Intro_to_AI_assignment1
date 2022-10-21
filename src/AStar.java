@@ -13,7 +13,7 @@ public class AStar {
     /**
      * 1 cell in the field.
      */
-    private class Cell implements Comparable<Cell> {
+    private final class Cell implements Comparable<Cell> {
         /**
          * Parent of the cell, i.e. where the Capitan Jack Sparrow came from.
          */
